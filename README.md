@@ -5,7 +5,7 @@
 Esse aplicativo simula um sistema de controle de estoque fictício para uma loja.
 Toda a comunicação é feita através de interface REST utilizando dados em JSON e autenticação por header HTTP.
 
-O aplicativo foi desenvolvido em [Kotlin](kotlinlang.org) e roda sobre JVM para Java 8, enquanto os testes foram
+O aplicativo foi desenvolvido em [Kotlin](http://kotlinlang.org) e roda sobre JVM para Java 8, enquanto os testes foram
 desenvolvidos em Python 3. A execução do aplicativo pode ser feito de duas maneiras:
 * Compilação do código através do Gradle, utilizando o script `runserver.sh`
 * Em um container Docker, através do script `rundocker.sh`
