@@ -5,7 +5,7 @@
 Esse aplicativo simula um sistema de controle de estoque fictício para uma loja.
 Toda a comunicação é feita através de interface REST utilizando dados em JSON e autenticação por header HTTP.
 
-O aplicativo foi desenvolvido em [Kotlin][kotlinlang.org] e roda sobre JVM para Java 8, enquanto os testes foram
+O aplicativo foi desenvolvido em [Kotlin](kotlinlang.org) e roda sobre JVM para Java 8, enquanto os testes foram
 desenvolvidos em Python 3. A execução do aplicativo pode ser feito de duas maneiras:
 * Compilação do código através do Gradle, utilizando o script `runserver.sh`
 * Em um container Docker, através do script `rundocker.sh`
@@ -18,7 +18,7 @@ do Python automaticamente em um virtualenv que é removido após o término dest
 #### Especificações
 
 Existem dois tipos de endpoints disponíveis: um para um usuário administrador (admin) e outro para interface com
-a loja fictícia [Pismo Store][https://github.com/mgaldieri/pismo-store] (vendor).
+a loja fictícia [Pismo Store](https://github.com/mgaldieri/pismo-store) (vendor).
 
 Todas as respostas do servidor seguem o mesmo padrão:
 ```
