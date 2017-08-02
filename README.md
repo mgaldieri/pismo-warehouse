@@ -49,6 +49,12 @@ Para testar esses endpoints as credenciais são:
 *Usuário Pismo Store*
 - api-key: `2289edc82ff62d5d8a82ad2ef7079871aef71713`
 
+A disponibilidade do sistema pode ser verificada pelo endpoint:
+
+`[GET] /ping`
+
+Que deve retornar um status code `200` e a mensagem `Alive`
+
 ##### Autenticação
 
 *Usuário administrador*
@@ -56,7 +62,7 @@ Para testar esses endpoints as credenciais são:
 Inicialmente o adminsitrador deverá logar no sistema:
 
 
-`[POST] admin/login`
+`[POST] /admin/login`
 ```
 REQUEST BODY:
 {
@@ -83,7 +89,7 @@ de acesso, portanto esse token deve simplesmente ser inserido no header `Authent
 
 ##### Endpoints ADMIN
 
-`[POST] admin/logout`
+`[POST] /admin/logout`
 
 Realiza a desautenticação do usuário no sistema.
 
@@ -99,7 +105,7 @@ RESPONSE:
 ```
 ---
 
-`[GET] admin/products`
+`[GET] /admin/products`
 
 Lista todos os produtos cadastrados (alguns já estão previamente cadastrados no sistema)
 
@@ -126,7 +132,7 @@ RESPONSE:
 
 ---
 
-`[GET] admin/product/<productId: int>`
+`[GET] /admin/product/<productId: int>`
 
 Lista as informações do produto com o id `productId`
 
@@ -151,7 +157,7 @@ RESPONSE:
 
 ---
 
-`[PUT] admin/product`
+`[PUT] /admin/product`
 
 Insere um novo produto no sistema
 
@@ -175,7 +181,7 @@ RESPONSE:
 
 ---
 
-`[PUT] admin/product/<productId: int>`
+`[PUT] /admin/product/<productId: int>`
 
 Adiciona mais unidades do produto com o id `productId` ao estoque
 
@@ -194,7 +200,7 @@ RESPONSE:
 
 ---
 
-`[POST] admin/product/<productId: int>`
+`[POST] /admin/product/<productId: int>`
 
 Altera os dados de um produto no estoque com o id `productId`
 
@@ -218,7 +224,7 @@ RESPONSE:
 
 ##### Endpoints VENDOR
 
-`[GET] vendor/products`
+`[GET] /vendor/products`
 
 Lista todos os produtos cadastrados
 
@@ -245,7 +251,7 @@ RESPONSE:
 
 ---
 
-`[GET] vendor/product/<productId: int>`
+`[GET] /vendor/product/<productId: int>`
 
 Lista as informações do produto com o id `productId`
 
@@ -270,7 +276,7 @@ RESPONSE:
 
 ---
 
-`[GET] vendor/product/<productId: int>/qty`
+`[GET] /vendor/product/<productId: int>/qty`
 
 Retorna a quantidade disponível em estoque para o produto com o id `productId`
 
@@ -289,7 +295,7 @@ RESPONSE:
 
 ---
 
-`[GET] vendor/products/search?term=<namePart>`
+`[GET] /vendor/products/search?term=<namePart>`
 
 Lista todos os produtos cadastrados cujo nome contenha o texto `namePart`
 
@@ -316,7 +322,7 @@ RESPONSE:
 
 ---
 
-`[POST] vendor/products/sell`
+`[POST] /vendor/products/sell`
 
 Realiza a venda de produtos e registra tanto as transações como a alteração da quantidade disponível em estoque
 
