@@ -17,12 +17,14 @@ DOCKER_NET_NAME="pismo-net"
 
 echo "Iniciando testes..."
 
+echo "Instalando dependências..."
 mkdir ${VENV_DIR}
 pyvenv "${VENV}" 2>&1 1>/dev/null
 source "${VENV}/bin/activate"
 pip3 install wheel && pip3 install -r ${TEST_DIR}/requirements.txt 2>&1 1>/dev/null
 
 # Start docker
+echo "Iniciando Docker..."
 if hash docker-machine 2>/dev/null; then
     docker-machine start default 2>&1 1>/dev/null
     docker-machine env default 2>&1 1>/dev/null
@@ -38,11 +40,13 @@ if docker network create -d bridge --subnet ${DOCKER_SUBNET} ${DOCKER_NET_NAME} 
     docker run -d --name ${WAREHOUSE_CONTAINER_NAME} -p ${WAREHOUSE_SERVER_PORT}:${WAREHOUSE_SERVER_PORT} --network=${DOCKER_NET_NAME} ${WAREHOUSE_IMAGE_NAME} 2>&1 1>/dev/null
 fi
 
+echo "Iniciando testes..."
 aloe test/features
 
 ${VENV}/bin/deactivate
 rm -rf ${VENV_DIR}
 
+echo "Desconectando containers..."
 if docker network disconnect ${DOCKER_NET_NAME} ${WAREHOUSE_CONTAINER_NAME}; then
     docker stop ${WAREHOUSE_CONTAINER_NAME} 2>&1 1>/dev/null
     docker rm ${WAREHOUSE_CONTAINER_NAME} 2>&1 1>/dev/null
@@ -53,3 +57,5 @@ fi
 if docker network rm ${DOCKER_NET_NAME}; then
     echo "Rede encerrada"
 fi
+
+echo "Pronto!"
